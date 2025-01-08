@@ -1,13 +1,18 @@
-BINARY_NAME=MarkDown.app
-APP_NAME=MarkDown
+LINUX_BINARY_NAME=MarkDownEditor.tar.xz
+APP_NAME=MarkDownEditor
 VERSION=1.0.0
 
 ## build: build binary and package app
-build:
-	rm -rf ${BINARY_NAME}
-	rm -f fyne-md
-	fyne package -appVersion ${VERSION} -name ${APP_NAME} -release
+linux-build:
+	rm -rf ${LINUX_BINARY_NAME}
+	fyne package -os linux -icon icon.png -appVersion ${VERSION} -name ${APP_NAME}
 
+## build: build binary and package app
+win-build:
+	fyne package -os windows -icon icon.png -appVersion ${VERSION} -name ${APP_NAME}
+
+mac-build
+	fyne package -os darwin -icon icon.png -appVersion ${VERSION} -name ${APP_NAME}
 ## run: builds and runs the application
 run:
 	go run .
